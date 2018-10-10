@@ -9,7 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AutoLotDAL_Core2\AutoLotDAL_Core2.Models\AutoLotDAL_Core2.Models.csproj" />
+    <ProjectReference Include="..\..\AutoLotDAL_Core2\AutoLotDAL_Core2\AutoLotDAL_Core2.csproj" />
   </ItemGroup>
 
 </Project>

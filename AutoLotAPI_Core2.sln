@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.28010.2041
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoLotAPI_Core2", "AutoLotAPI_Core2\AutoLotAPI_Core2.csproj", "{863EE323-87EE-446F-873E-F7A29880260D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoLotDAL_Core2.Models", "..\AutoLotDAL_Core2\AutoLotDAL_Core2.Models\AutoLotDAL_Core2.Models.csproj", "{DD3350E3-234E-4BB8-9408-80FB6B66821E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoLotDAL_Core2", "..\AutoLotDAL_Core2\AutoLotDAL_Core2\AutoLotDAL_Core2.csproj", "{67584065-F08A-4852-B356-324B281CEF65}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoLotMVC_Core2", "AutoLotMVC_Core2\AutoLotMVC_Core2.csproj", "{CC525220-0D1A-4465-AFAE-FE97590E2143}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{863EE323-87EE-446F-873E-F7A29880260D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{863EE323-87EE-446F-873E-F7A29880260D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{863EE323-87EE-446F-873E-F7A29880260D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD3350E3-234E-4BB8-9408-80FB6B66821E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD3350E3-234E-4BB8-9408-80FB6B66821E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD3350E3-234E-4BB8-9408-80FB6B66821E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD3350E3-234E-4BB8-9408-80FB6B66821E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67584065-F08A-4852-B356-324B281CEF65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67584065-F08A-4852-B356-324B281CEF65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67584065-F08A-4852-B356-324B281CEF65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67584065-F08A-4852-B356-324B281CEF65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC525220-0D1A-4465-AFAE-FE97590E2143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC525220-0D1A-4465-AFAE-FE97590E2143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC525220-0D1A-4465-AFAE-FE97590E2143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC525220-0D1A-4465-AFAE-FE97590E2143}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

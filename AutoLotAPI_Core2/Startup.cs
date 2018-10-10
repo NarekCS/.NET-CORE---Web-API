@@ -2,21 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoLotAPI_Core2.Filters;
+using AutoLotDAL_Core2.EF;
+using AutoLotDAL_Core2.Repos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace AutoLotAPI_Core2
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IHostingEnvironment _env;
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
+            _env = env;
             Configuration = configuration;
         }
 
@@ -25,7 +34,20 @@ namespace AutoLotAPI_Core2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(config => 
+                {
+                    config.Filters.Add(new AutoLotExceptionFilter(_env));
+                })
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(options =>
+                {
+                    //Revert to PascalCasing for JSON handling
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                   // options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
+            services.AddDbContextPool<AutoLotContext>(options => options
+                    .UseSqlServer(Configuration.GetConnectionString("AutoLot"), o => o.EnableRetryOnFailure())
+                    .ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning)));
+            services.AddScoped<IInventoryRepo, InventoryRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +62,7 @@ namespace AutoLotAPI_Core2
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
